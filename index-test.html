@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MacOS codeName</title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<link rel="stylesheet" href="">
+</head>
+<body>
+<script src="./js/macos-identifier.js"></script>
+<script src="./js/uaList.js"></script>
+<script>
+// view code name
+var viewCodeName = function(codeName, fontSize) {
+  if( !fontSize ) fontSize = 100;
+  var div = document.createElement("div");
+  div.style.fontSize = fontSize + "px";
+  div.style.fontFamily="Verdana,arial,sans-serif";
+  var txt = document.createTextNode(codeName);
+  div.appendChild(txt);
+  document.body.appendChild(div);
+}
+
+for(var idx in uaList){
+  console.log("____");
+  var codeName = (function(moi){ 
+    if( uaList[idx].match(/####.*####/) ) { return uaList[idx] };
+    return uaList[idx] + " : " + (moi.judge(uaList[idx]) || "no MacOS");
+  })(new MacOSIdentifier);
+  console.log(codeName);
+  viewCodeName(codeName, 6);
+}
+</script>
+</body>
+</html>
