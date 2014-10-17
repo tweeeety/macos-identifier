@@ -20,11 +20,15 @@ var viewCodeName = function(codeName, fontSize) {
   document.body.appendChild(div);
 }
 
-var codeName = (function(moi){ 
-  return moi.judge(window.navigator.userAgent) || undefined;
-})(new MacOSIdentifier);
-console.log(codeName);
-viewCodeName(codeName);
+// main
+!function(moi){ 
+  var ua = window.navigator.userAgent;
+  var codeName = moi.judge(ua) || undefined;
+  console.log(ua);
+  console.log(codeName);
+  viewCodeName(ua, 8);
+  viewCodeName(codeName);
+}(new MacOSIdentifier);
 
 </script>
 </body>
