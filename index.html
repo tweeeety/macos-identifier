@@ -12,6 +12,7 @@
 // view code name
 var viewCodeName = function(codeName, fontSize) {
   if( !fontSize ) fontSize = 100;
+  if( !codeName ) codeName = "MacOS名無し";
   var div = document.createElement("div");
   div.style.fontSize = fontSize + "px";
   div.style.fontFamily="Verdana,arial,sans-serif";
@@ -24,6 +25,7 @@ var viewCodeName = function(codeName, fontSize) {
 !function(moi){ 
   var ua = window.navigator.userAgent;
   var codeName = moi.judge(ua) || undefined;
+  codeName = undefined;
   console.log(ua);
   console.log(codeName);
   viewCodeName(ua, 8);
